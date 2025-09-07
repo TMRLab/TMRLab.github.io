@@ -1,0 +1,10 @@
+# main links
+main:
+  - title: "Publications"
+    url: /publications/
+  - title: "Projects"
+    url: /projects/
+  - title: "Team"
+    url: /team/
+  - title: "Contact"
+    url: /contact/
