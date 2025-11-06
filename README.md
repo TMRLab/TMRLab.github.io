@@ -27,10 +27,3 @@ bundle exec jekyll serve</code>
     * 717268933
     * 855044226
     * 1452527980
-
-## Poll
-  * [Which logo do you prefer?](https://linkto.run/p/RUCVX48S)
-    * _Candidate 1_: The two colors represent symbiosis and dysbiosis, while the gut symbol on the shield signifies protection and stability.
-      * ![Candidate1](assets/images/logo_Lab_1.png)
-    * _Candidate 2_: The pill symbolizes translation and the petri dish with bacteria highlights microbiome research.
-      * ![Candidate2](assets/images/logo_Lab_2.png)
