@@ -88,3 +88,28 @@ search: false
                 border-bottom: 2px solid $primary-color;
         }
 }
+
+.sidebar-media {
+  display: flex;
+  flex-direction: column;   /* logo, then title, then links */
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.sidebar-media__logo {
+  width: min(350px, 100%);
+  height: 150px;
+  object-fit: contain;
+  display: block;
+}
+
+.sidebar-media__title {
+  margin: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.sidebar-media__body {
+  width: 100%;
+  text-align: left;         /* or center if you prefer */
+}
