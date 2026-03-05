@@ -12,12 +12,34 @@ header:
 <p style="margin:0;display:inline;float:left"><font size="3">&#8224; : (co-) First author, &#x2a; : (co-) Corresponding author</font></p>
 
 <p style="margin:0;display:inline;float:right">
+        <a href="#2026" class="btn btn--info btn--small">2026</a>
         <a href="#2024" class="btn btn--info btn--small">2024</a>
         <a href="#2023" class="btn btn--info btn--small">2023</a>
         <a href="#2022" class="btn btn--info btn--small">2022</a>
 </p>
 </div>
 <br >
+
+## 2026
+
+{% include publication 
+        authors="Breenna Dobson<sup>&#8224;</sup>, Kathryn Strayer, Ayesha Wijesinghe, Jared Schlechte, Oscar Tejada, Alexandria Bartlett, Matthew Stephens, Diana Changirwa, Nicole A Cho, Ian-Ling Yu, Nargis Khan, Braedon McDonald<sup>&#x2a;</sup>"
+        title="Differential disease tolerance mediates sex-biased illness severity in sepsis" 
+        journal=" Proc Natl Acad Sci U S A" 
+        page="2026;123(9):e2522764123" 
+        pmid="41734079" 
+        doi="10.1073/pnas.2522764123"
+%}
+
+{% include publication 
+        authors="Nicole A Cho<sup>&#8224;</sup>, Jared Schlechte, Ian-ling Yu, Ish Bains, Tanner Fahlman, Colin Mackenzie, Braedon McDonald<sup>&#x2a;</sup>"
+        title="Impaired systemic antibody response against gut microbiota pathobionts in critical illness and susceptibility to nosocomial infections" 
+        journal="Intensive Care Med Exp" 
+        page="2026;14:9" 
+        pmid="41591701" 
+        doi="10.1186/s40635-026-00860-1"
+%}
+
 
 ## 2024
 
@@ -27,11 +49,12 @@ header:
         journal="Gut Microbes" 
         page="2024;16(1):2351478" 
         pmid="38780485" 
-        doi="10.1080/19490976.2024.2351478"        
+        doi="10.1080/19490976.2024.2351478"
 %}
 
 
 ## 2023
+
 {% include publication 
         authors="Jared Schlechte<sup>&#8224;</sup>, Amanda Z Zucoloto, Ian-Ling Yu, Christopher J Doig, Mary J Dunbar, Kathy D McCoy, Braedon McDonald<sup>&#x2a;</sup>"
         title="Dysbiosis of a microbiota-immune metasystem in critical illness is associated with nosocomial infections" 
