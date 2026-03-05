@@ -8,4 +8,6 @@ header:
   overlay_image: /assets/images/main_projects.png
 collection: projects
 classes: wide
+sort_by: date
+sort_order: reverse
 ---
