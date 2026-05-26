@@ -5,7 +5,7 @@ title: "Let’s Connect"
 excerpt: "We’d Love to Hear from You"
 header:
   overlay_color: "#5e616c"
-  overlay_image: /assets/images/main_contact.png
+  overlay_image: /assets/images/home/main_contact.png
 toc: true
 toc_label: "Contact"
 toc_sticky: true
@@ -49,5 +49,5 @@ Calgary, AB T2N 4N1, Canada <br />
 ## Administrative Assistant
 **Chelsea Davidson** <br />
 <span class="style_contact">
-<u>Email</u>: <a href="mailto:chelsea.davidson@albertahealthservices.ca" style="text-decoration:none !important; text-decoration:none;">chelsea.davidson@albertahealthservices.ca</a> <br />
+<u>Email</u>: <a class="u-link-plain" href="mailto:chelsea.davidson@albertahealthservices.ca">chelsea.davidson@albertahealthservices.ca</a> <br />
 </span>

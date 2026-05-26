@@ -2,7 +2,8 @@
 title: "MICROBENCH"
 excerpt: "Microbiota reproducibility benchmark project"
 header:
-  image: /assets/images/main_projects.png
+  image: /assets/images/home/main_projects.png
+  teaser: /assets/images/project/project_microbench_logo.png
 date: 2025-11-01
 last_modified_at: 2026-03-05
 sidebar:
@@ -10,11 +11,10 @@ sidebar:
   - title: ""
     text: >
       <div class="sidebar-media">
-        <img class="sidebar-media__logo" src="/assets/images/project_microbench_logo.png" alt="">
+        <img class="sidebar-media__logo" src="/assets/images/project/project_microbench_logo.png" alt="">
         <h3 class="sidebar-media__title">Research Outputs</h3>
         <div class="sidebar-media__body">
-          <a href="https://github.com/Snyder-Institute/basen" target="_blank" rel="noopener">The <i>basen</i> R package</a><br>
-          <a href="https://shinyapps.ucalgary.ca/MICROBENCH/" target="_blank" rel="noopener">MICROBENCH ShinyApp</a>
+          <a href="https://github.com/Snyder-Institute/basen" target="_blank" rel="noopener">The R <i>basen</i> package</a>
         </div>
       </div>
 ---
@@ -23,7 +23,7 @@ sidebar:
 
 Human microbiota-associated (HMA) mice enable controlled testing of how human gut microbes influence host biology. However, **engraftment outcomes are highly variable**: many human taxa fail to persist in mice, and microbial communities often diverge substantially from their donors. Methodological differences—such as donor handling, colonization protocols, and timing of sampling—further reduce reproducibility. Despite widespread reports of successful phenotype transfer, these inconsistencies raise concerns regarding experimental and statistical rigor.
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/project_microbench.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/project/project_microbench.png" alt="">
 
 ### Objective
 

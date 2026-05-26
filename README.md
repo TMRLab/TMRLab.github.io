@@ -1,4 +1,4 @@
-# Translational Microbiome Research (TMR) Lab
+# McDonald Lab
  > This GitHub repository hosts the Lab homepage at TMRLab.github.io
 
   * The Web introduces our lab, highlights ongoing projects, and shares information about our team and collaborations. 

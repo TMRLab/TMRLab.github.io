@@ -1,0 +1,35 @@
+/* ==========================================================================
+   McDonald Lab "Living Laboratory" skin
+   Bridges clinical precision with the organic nature of microbiome research.
+
+   Core palette
+     Primary       #003737  Deep Teal      — authoritative typography, anchors
+     Primary alt   #1d4e4e  Teal           — gradient endpoint
+     Secondary     #006a62  Bio-Mint       — interaction, key highlights
+     Tertiary      #1b3700  Moss Green     — organic accents
+     Surface       #faf8ff  Surgical White — page background
+     On-surface    #181b25  Near-black     — body text (never pure black)
+   ========================================================================== */
+
+/* Colors */
+$background-color         : #faf8ff !default;
+$text-color               : #181b25 !default;
+$muted-text-color         : #404848 !default;
+$primary-color            : #003737 !default;
+$border-color             : rgba(64, 72, 72, 0.12) !default;
+$footer-background-color  : #f2f3ff !default;
+$link-color               : #006a62 !default;
+$masthead-link-color      : #003737 !default;
+$masthead-link-color-hover: #006a62 !default;
+$navicon-link-color-hover : #003737 !default;
+
+/* Layout — override MM's defaults BEFORE its _variables.scss loads.
+   MM ties the LEFT author sidebar width and the RIGHT TOC width to a single
+   variable, so we set them here and every dependent rule (.sidebar, .page,
+   .sidebar__right) recalculates in one place. Was 200px / 300px. */
+$right-sidebar-width-narrow: 170px !default;
+$right-sidebar-width       : 210px !default;
+
+// Unified page max-width — masthead, hero, content card, and #main all use this.
+// MM's `_variables.scss` defaults $max-width to $x-large (1280px) — overridden here.
+$max-width                 : 1100px !default;

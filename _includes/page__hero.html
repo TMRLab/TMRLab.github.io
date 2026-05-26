@@ -25,6 +25,10 @@
                         <h1 id="page-title" class="page__title" itemprop="headline">
                                 {{ page.tagline | markdownify | remove: "<p>" | remove: "</p>" }}
                         </h1>
+                {% elsif page.title %}
+                        <h1 id="page-title" class="page__title page__title--secondary" itemprop="headline">
+                                {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+                        </h1>
                 {% endif %}
                 {% if page.header.show_overlay_excerpt != false and page.excerpt %}
                         <p class="page__lead">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>

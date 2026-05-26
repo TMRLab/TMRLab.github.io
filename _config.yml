@@ -12,16 +12,16 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "ml" # custom McDonald Lab "Living Laboratory" skin
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Translational Microbiome Research Lab"
+title                    : "McDonald Lab"
 title_separator          : "-"
-logo                     : "/assets/images/logo_Lab.png"
+logo                     : "/assets/images/home/logo_ML.png"
 words_per_minute         : 200
-masthead_title           : "TMR Lab"
-subtitle                 : "Translational Microbiome Research Lab"
+masthead_title           : "McDonald Lab"
+subtitle                 :
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 # name                     : "Your Name"
 # description              : "An amazing website."

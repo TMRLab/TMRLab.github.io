@@ -5,7 +5,7 @@ title: "Legal & Credits"
 excerpt: "Behind the Site"
 header:
   overlay_color: "#5e616c"
-  overlay_image: /assets/images/main_disclaimer.png
+  overlay_image: /assets/images/home/main_disclaimer.png
 ---
 
 ## Privacy Policy

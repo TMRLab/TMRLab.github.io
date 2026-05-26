@@ -2,4 +2,41 @@
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
 
+<!-- Critical CSS: paint surface + hero colors on first frame, before main.css arrives. -->
+<style>
+  html, body { background-color: #faf8ff; }
+  .page__hero--overlay { background-color: #003737 !important; }
+  .masthead { background-color: rgba(250, 248, 255, 0.72); }
+</style>
+
+<!-- Async, non-blocking webfonts. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+</noscript>
+
+<!-- Team page (mobile): tap a headshot to expand/collapse the member's bio.
+     Delegated handler — only active script on the static site beyond Altmetric. -->
+<script>
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest && e.target.closest('.author__avatar img');
+    if (!img) return;
+    var row = img.closest('tr');
+    if (row) row.classList.toggle('bio-expanded');
+  });
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WSKVZK9N');</script>
+<!-- End Google Tag Manager -->
+
 <!-- end custom head snippets -->

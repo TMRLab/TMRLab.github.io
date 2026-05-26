@@ -4,7 +4,7 @@ permalink: /
 hidden: true
 header:
   overlay_color: "#5e616c"
-  overlay_image: /assets/images/main_hero.png
+  overlay_image: /assets/images/home/main_hero.png
   actions:
     - label: "<i class='fas fa-user-group'></i> Our Team"
       url: "/team/"
@@ -12,12 +12,12 @@ title: Microbiome Rules
 tagline: "Microbes to Medicine:<br />Gut Power Unleashed"
 excerpt: The human gut is home to trillions of microbes that influence everything from metabolism and immunity to chronic disease.
 layouts_gallery:
-  - image_path: /assets/images/logo_UCalgary.png
-  - image_path: /assets/images/logo_SI.png
-  - image_path: /assets/images/logo_AHS.png
-  - image_path: /assets/images/logo_CIHR.png
-  - image_path: /assets/images/logo_NSERC.png
-  - image_path: /assets/images/logo_empty.png
+  - image_path: /assets/images/home/logo_UCalgary.png
+  - image_path: /assets/images/home/logo_SI.png
+  - image_path: /assets/images/home/logo_AHS.png
+  - image_path: /assets/images/home/logo_CIHR.png
+  - image_path: /assets/images/home/logo_NSERC.png
+  - image_path: /assets/images/home/logo_empty.png
 ---
 
 ## Research Overview
@@ -29,7 +29,7 @@ Through multi-dimensional profiling approaches, **we aim to characterize microbi
 **A key objective of our program is the translation of these findings into novel therapeutic strategies**. We are developing precision microbiota-editing tools to restore healthy microbiota-immune mutualism and exploring innovative immunotherapies to enhance host defense mechanisms against infections and sepsis. Our ultimate goal is to enable targeted, mechanism-based interventions to prevent and treat infections in critically ill patients.
 
 <figure style="width: 60%" class="align-center">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/main_gutMatters.png" alt="">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/home/main_gutMatters.png" alt="">
   <figcaption>Why Gut Health Matters.</figcaption>
 </figure> 
 

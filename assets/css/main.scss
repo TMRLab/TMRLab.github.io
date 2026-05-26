@@ -5,111 +5,914 @@ search: false
 
 @charset "utf-8";
 
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin (also overrides MM's layout vars)
 @import "minimal-mistakes"; // main partials
 
-/* User defined */
+/* ==========================================================================
+   USER OVERRIDES — "The Living Laboratory" design system
+   ========================================================================== */
 
-#publication {
-    display: table;
-    width: 100%;
-    a:hover
-        {
-                text-decoration: none;
-                border-bottom: 2px solid $primary-color;
-        }
+/* Color tokens ------------------------------------------------------------- */
+$ml-primary           : #003737;  // deep teal — authoritative anchor
+$ml-primary-container : #1d4e4e;  // teal gradient endpoint
+$ml-secondary         : #006a62;  // bio-mint — interaction state
+$ml-secondary-fixed   : #67f5e5;  // bright mint — accent / footer hover
+$ml-tertiary          : #1b3700;  // moss green
+$ml-tertiary-accent   : #baf382;  // light moss
+$ml-on-surface        : #181b25;  // near-black body text
+$ml-on-surface-variant: #404848;  // muted body text
+$ml-on-primary        : #faf8ff;  // text/icons on dark surfaces
+$ml-on-primary-muted  : rgba(250, 248, 255, 0.85);  // muted text on dark
+$ml-surface           : #faf8ff;  // page base
+$ml-surface-low       : #f2f3ff;  // structural sections
+$ml-surface-lowest    : #ffffff;  // lifted cards
+$ml-surface-high      : #e6e7f5;  // hover state
+$ml-glass-bg          : rgba(250, 248, 255, 0.72);
+$ml-ghost-border      : rgba(64, 72, 72, 0.12);
+
+/* Typography tokens -------------------------------------------------------- */
+$font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-body   : 'Inter',   -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+/* Radius scale ------------------------------------------------------------- */
+$radius-sm   : 0.6rem;
+$radius-md   : 0.75rem;
+$radius-lg   : 1rem;
+$radius-xl   : 1.25rem;
+$radius-2xl  : 1.5rem;
+$radius-3xl  : 2rem;
+$radius-pill : 9999px;
+
+/* Shadow scale ------------------------------------------------------------- */
+$shadow-sm        : 0 2px 10px rgba(24, 27, 37, 0.05);
+$shadow-md        : 0 4px 24px rgba(24, 27, 37, 0.06);
+$shadow-lg        : 0 24px 48px rgba(24, 27, 37, 0.08);
+$shadow-primary   : 0 10px 24px rgba(0, 55, 55, 0.18);
+$shadow-primary-lg: 0 14px 32px rgba(0, 55, 55, 0.28);
+
+/* Common gradient ---------------------------------------------------------- */
+$gradient-bio: linear-gradient(135deg, $ml-primary 0%, $ml-primary-container 100%);
+
+/* Unified page max-width (masthead, hero, content card). MM's #main is set via
+   the skin file so it propagates to MM's own rules too. */
+$page-max: 1100px;
+
+/* Base typography ---------------------------------------------------------- */
+html {
+  font-size: 15px;
+  // Anchor jumps (e.g., TOC links) should land below the sticky masthead, not behind it.
+  scroll-padding-top: 5.5rem;
+  scroll-behavior: smooth;
+}
+@media (min-width: 80em) { html { font-size: 16px; } }
+
+html, body {
+  background: $ml-surface;
+  color: $ml-on-surface;
+  font-family: $font-body !important;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.55;
 }
 
-#publication .paper {
-    display: table-cell;
-    width: 90%;
-    padding: 10px 10px 10px 20px;
+h1, h2, h3, h4, h5, h6,
+.page__title, .archive__item-title,
+.site-title, .site-subtitle,
+.greedy-nav .visible-links a,
+.btn {
+  font-family: $font-display !important;
+  letter-spacing: -0.015em;
 }
 
-#publication .stats {
-    display: table-cell;
-    width: 10%;
-    vertical-align: middle;
+h1, h2, .page__title { font-weight: 800; letter-spacing: -0.02em; }
+h3, h4               { font-weight: 700; }
+
+::selection { background: $ml-secondary-fixed; color: $ml-primary; }
+
+/* Glassmorphism Masthead --------------------------------------------------- */
+.masthead {
+  background: $ml-glass-bg !important;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid $ml-ghost-border;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s ease;
 }
 
-.style_title {
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 1rem;
+/* Custom static nav (no greedy-nav JS) ------------------------------------- */
+.masthead__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6em 1.5em;
+  max-width: $page-max;
+  margin: 0 auto;
+  position: relative;
 }
 
-.style_author {
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.8rem;
-  color: #333333;
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.site-logo img {
+  max-height: 3.4rem;
+  width: auto;
+  border-radius: $radius-pill;
+  box-shadow: 0 4px 14px rgba(0, 55, 55, 0.18);
+  transition: transform 0.35s ease;
+}
+.site-logo:hover img { transform: scale(1.04); }
+
+.site-title {
+  font-family: $font-display;
+  font-weight: 800;
+  color: $ml-primary;
+  letter-spacing: -0.02em;
+  font-size: 1.6rem;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.site-title:hover { color: $ml-secondary; }
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-left: auto;
+
+  a {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+    color: $ml-primary;
+    opacity: 0.82;
+    text-decoration: none;
+    transition: opacity 0.25s ease, color 0.25s ease;
+
+    &:hover, &:focus { color: $ml-secondary; opacity: 1; }
+    &:focus { outline: none; }
+    &:focus-visible {
+      outline: 2px solid $ml-secondary;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+  }
 }
 
-.style_journal {
-  font-stretch: normal;
+// Mobile menu — pure CSS checkbox-hack toggle. No JS required.
+.nav-toggle { display: none; }       // hidden checkbox
+
+.nav-toggle-button {
+  display: none;                     // hidden on desktop; shown on mobile
+  width: 2rem;
+  height: 1.5rem;
+  margin-left: auto;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+
+  span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: $ml-primary;
+    border-radius: 1px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  span:nth-child(1) { top: 0.25rem; }
+  span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  span:nth-child(3) { bottom: 0.25rem; }
+}
+
+@media (max-width: 48em) {
+  .nav-toggle-button { display: block; }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    margin-top: 0.4rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    min-width: 12rem;
+    padding: 0.5rem 0;
+    background: $ml-surface-lowest;
+    border: 1px solid $ml-ghost-border;
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    z-index: 1001;
+
+    a {
+      padding: 0.55rem 1rem;
+      &:hover { background: $ml-surface-low; }
+    }
+  }
+
+  // Checkbox-hack: when the toggle is checked, reveal the nav.
+  .nav-toggle:checked ~ .site-nav { display: flex; }
+
+  // Animate the hamburger into an X when open.
+  .nav-toggle:checked ~ .nav-toggle-button {
+    span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { bottom: auto; top: 50%; transform: translateY(-50%) rotate(-45deg); }
+  }
+}
+
+/* Hero — original overlay images, no tint or glow overlays ----------------- */
+.page__hero--overlay {
+  overflow: hidden;
+  padding: 4.5em 0 4em;
+  border-radius: 0 0 $radius-3xl $radius-3xl;
+  // First-paint guard: teal shows behind the image before it loads.
+  // background-image left unset so MM's inline overlay_image renders.
+  background-color: $ml-primary !important;
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: $page-max;
+    margin: 0 auto;
+    padding-left: clamp(1rem, 3.5vw, 2.8rem);
+    padding-right: clamp(1rem, 3.5vw, 2.8rem);
+  }
+
+  .page__title {
+    font-weight: 800;
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: $ml-on-primary;
+    margin-bottom: 0.3em;
+  }
+
+  .page__title--secondary {
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+    margin-bottom: 0.25em;
+  }
+
+  .page__lead {
+    font-family: $font-body !important;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: $ml-on-primary-muted;
+    max-width: 38rem;
+    margin-top: 0;
+  }
+}
+
+// Tighten the hero a bit on secondary pages so it doesn't tower over the title.
+.layout--splash:not(:has(.page__title:not(.page__title--secondary))) .page__hero--overlay {
+  padding: 3.2em 0 3em;
+}
+
+/* Buttons ------------------------------------------------------------------ */
+.btn {
+  border-radius: $radius-sm !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: -0.01em;
+  padding: 0.65em 1.25em !important;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border: none !important;
+
+  &:hover  { transform: translateY(-1px); }
+  &:active { transform: translateY(0) scale(0.98); }
+}
+
+.btn--primary,
+.btn--success,
+.btn--inverse {
+  background: $gradient-bio !important;
+  color: $ml-on-primary !important;
+  box-shadow: $shadow-primary;
+
+  &:hover {
+    background: linear-gradient(135deg, #00504e 0%, #2a6160 100%) !important; // primary +6% lightness
+    box-shadow: $shadow-primary-lg;
+  }
+}
+
+.btn--info {
+  background: $ml-glass-bg !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: $ml-primary !important;
+  border: 1px solid $ml-ghost-border !important;
+
+  &:hover {
+    background: $ml-surface-lowest !important;
+    color: $ml-secondary !important;
+    border-color: rgba(0, 106, 98, 0.3) !important;
+  }
+}
+
+.btn--light-outline {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: $ml-on-primary !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.16) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+  }
+}
+
+/* Page content typography & flow ------------------------------------------- */
+.page__content {
+  font-size: 0.95rem;
+  line-height: 1.55;
+
+  // Zero the top margin on the first heading/paragraph so it lines up with the
+  // author photo / TOC tops. Can't use :first-child — that's the TOC <aside>.
+  > h1:first-of-type,
+  > h2:first-of-type,
+  > h3:first-of-type,
+  > p:first-of-type { margin-top: 0 !important; }
+
+  h2 {
+    margin-top: 1.8em;
+    margin-bottom: 0.55em;
+    font-size: 1.45rem;
+    color: $ml-primary;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    border-bottom: none !important;
+    padding-bottom: 0;
+    line-height: 1.2;
+  }
+
+  h3 {
+    color: $ml-primary;
+    font-weight: 700;
+    margin-top: 1.3em;
+    margin-bottom: 0.4em;
+    font-size: 1.15rem;
+    line-height: 1.25;
+  }
+
+  p, li {
+    color: $ml-on-surface-variant;
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  p { margin: 0 0 0.85em; }
+  ul, ol { margin: 0 0 0.85em 1.25em; }
+  li { margin-bottom: 0.25em; }
+
+  strong { color: $ml-on-surface; font-weight: 600; }
+
+  // Animated mint underline on body links (does NOT apply to TOC — overridden below).
+  a {
+    color: $ml-secondary;
+    text-decoration: none;
+    background-image: linear-gradient(transparent calc(100% - 2px), $ml-secondary 2px);
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+    &:hover { background-size: 100% 100%; }
+  }
+}
+
+// Lifted white card for home/splash content.
+.layout--splash .page__content {
+  max-width: $page-max;
+  margin: 2rem auto 0;
+  padding: 2.6rem clamp(1rem, 3.5vw, 2.8rem) 3rem;
+  background: $ml-surface-lowest;
+  border-radius: $radius-2xl;
+  position: relative;
+  z-index: 2;
+  box-shadow: $shadow-md;
+}
+
+/* Figures, gallery, archive items ----------------------------------------- */
+figure, figure img,
+.page__content img,
+.archive__item-teaser img {
+  border-radius: $radius-xl;
+}
+
+figcaption {
+  font-family: $font-body;
+  font-size: 0.85rem;
+  color: $ml-on-surface-variant;
   font-style: italic;
-  font-weight: normal;
-  font-size: 0.8rem;
-  color: #333333;
+  text-align: center;
+  margin-top: 0.6em;
 }
 
-.style_small {
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.8rem;
-  color: #333333;
+.gallery {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  align-items: center;
+
+  figure {
+    margin: 0;
+    img {
+      width: 100%;
+      height: 70px;
+      object-fit: contain;
+      filter: grayscale(20%);
+      opacity: 0.78;
+      transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+      &:hover { filter: grayscale(0); opacity: 1; transform: translateY(-2px); }
+    }
+  }
+
+  // Mobile: scale logos to 75% (height 70 → 52.5px, column floor 140 → 105px).
+  // Also hide the empty placeholder logo on mobile (only used to balance the
+  // desktop grid).
+  @media (max-width: 48em) {
+    grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+    gap: 1rem;
+    figure img { height: 52px; }
+    figure:has(img[src*="logo_empty"]) { display: none; }
+  }
 }
 
-.style_contact {
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.8rem;
-  color: #333333;
-  a:hover
-        {
-                text-decoration: none;
-                border-bottom: 2px solid $primary-color;
-        }
+/* Mobile: home-page figure (gutMatters) — override the inline width: 60% to 100%. */
+@media (max-width: 48em) {
+  .page__content figure.align-center { width: 100% !important; }
 }
 
-.style_email {
-        font-stretch: normal;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 0.8rem;
-        color: #333333;
-        a:hover
-        {
-                text-decoration: none;
-                border-bottom: 2px solid $primary-color;
-        }
+.archive__item {
+  background: $ml-surface-lowest;
+  border-radius: $radius-xl;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid transparent;
+
+  // No background change on hover — logos aren't transparent so the colour
+  // shift looks dirty. Just a subtle lift + soft shadow.
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
+  }
 }
 
+/* Project listing — 2-column grid of cards; each card stacks vertically:
+   logo on top, title middle, excerpt bottom. Collapses to 1 column on mobile.
+   Centers within #main; archive layout's float/padding is neutralised. */
+.layout--collection {
+  .archive {
+    float: none !important;
+    width: 100% !important;
+    padding-inline: 0 !important;
+    margin-inline: 0 !important;
+  }
+}
+
+.entries-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 450px));
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: $page-max;
+  margin-inline: auto;
+  padding-inline: 1em;
+
+  .list__item { margin: 0; }
+
+  .archive__item {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    text-align: center;     // center logo + title + excerpt within each card
+  }
+
+  .archive__item-teaser--list {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: auto;
+      height: auto;
+      max-height: 110px;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 0;          // logos render on the card's white surface as-is
+    }
+  }
+
+  .archive__item-title { margin-top: 0; }
+}
+
+@media (max-width: 48em) {
+  .entries-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.archive__item-title {
+  color: $ml-primary;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+/* Footer ------------------------------------------------------------------- */
+.page__footer {
+  background: $gradient-bio !important;
+  color: $ml-on-primary-muted !important;
+  border-top: none;
+
+  // Constrain footer content to the same $page-max as the masthead/hero/card.
+  // The teal gradient still spans full viewport; the text sits in the centered column.
+  > footer {
+    max-width: $page-max;
+    margin: 0 auto;
+    padding: 1rem 1.5em;
+  }
+
+  .page__footer-copyright,
+  .page__footer-copyright p,
+  a { color: $ml-on-primary-muted !important; }
+  a:hover { color: $ml-secondary-fixed !important; }
+
+  // Mobile: stack the two copyright lines and center them (was float-left / float-right).
+  @media (max-width: 48em) {
+    .page__footer-copyright p {
+      float: none !important;
+      display: block !important;
+      text-align: center !important;
+      margin: 0.25em 0 !important;
+    }
+  }
+}
+
+/* Mobile-only adjustments for publication + team pages ------------------- */
+@media (max-width: 48em) {
+  // Hide the year jump-buttons on the publications page (too cluttered on mobile).
+  .page__year-nav { display: none !important; }
+
+  // Left-align the right-column text on team page. MM's .author__bio has
+  // text-align: justify which was bleeding into the h3 name via inheritance.
+  .author__content,
+  .author__name,
+  .author__role,
+  .author__bio { text-align: left !important; }
+
+  // Team page: collapse member bios; tap headshot to reveal.
+  table tr .author__bio { display: none; }
+  table tr.bio-expanded .author__bio {
+    display: block;
+    padding: 0.6rem 0 0.4rem;
+  }
+  table tr .author__avatar img {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  table tr .author__avatar img:active {
+    transform: scale(1.03);
+    box-shadow: 0 4px 14px rgba(0, 55, 55, 0.18);
+  }
+}
+
+/* Team page — bio padding so it breathes around the role and next member. */
+table .author__bio {
+  padding: 1rem 1rem 1rem 0;  // align bio's left edge with name + role above
+}
+
+.page__footer-follow .social-icons .svg-inline--fa { color: $ml-on-primary-muted; }
+
+/* Sticky sidebars clear the sticky masthead (~4.5rem tall + spacing). ------ */
+.sidebar.sticky,
+.sidebar__right.sticky {
+  top: 5.5rem !important;
+}
+
+// Align top of left author sidebar, content, and right TOC at the same Y.
+// MM's .page__inner-wrap has margin-top: 1em that floats don't inherit; we apply
+// the same offset to both sidebars and zero out their first-child margins so
+// the offset is consistent and predictable.
+.sidebar              { margin-top: 1em; }
+.sidebar > *:first-child { margin-top: 0; }
+.sidebar__right       { margin-top: 0 !important; }
+
+/* Author sidebar ----------------------------------------------------------- */
+.sidebar {
+  // Hide MM's "Follow" dropdown — no social links configured for this author.
+  .author__urls-wrapper { display: none !important; }
+
+  // Desktop (≥1024px, where MM floats the sidebar): vertical stack — photo on
+  // top (large), name + email below. Fills the sidebar column.
+  .h-card { display: block; }
+
+  .author__avatar {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 0 0.6rem;
+  }
+
+  .author__avatar img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 160px !important;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: $radius-xl;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .author__content {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+  }
+
+  .author__name {
+    color: $ml-primary;
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.25;
+    margin: 0 0 0.2rem;
+    text-align: left;
+  }
+
+  .style_email {
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+    font-size: 0.82rem;
+    line-height: 1.3;
+    p { margin: 0; text-align: left; }
+  }
+
+  // Mobile/tablet (<1024px, sidebar is full-width above content): horizontal
+  // grid — smaller photo on the left, name + email stacked on the right.
+  @media (max-width: 64em) {
+    .h-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      align-items: center;
+      gap: 0.15rem 0.9rem;
+    }
+
+    .author__avatar {
+      grid-row: 1 / span 2;
+      grid-column: 1;
+      margin: 0;
+    }
+
+    .author__avatar img {
+      width: 80px !important;
+      height: 80px !important;
+      max-width: 80px !important;
+    }
+
+    .author__content {
+      grid-row: 1;
+      grid-column: 2;
+      align-self: end;
+    }
+
+    .author__name {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .style_email {
+      grid-row: 2;
+      grid-column: 2;
+      align-self: start;
+      font-size: 0.78rem;
+    }
+  }
+}
+
+.sidebar__right img { border-radius: $radius-xl; } // (was incorrectly nested under .sidebar)
+
+/* TOC ---------------------------------------------------------------------- */
+.toc {
+  background: $ml-surface-lowest !important;
+  border: none !important;
+  border-radius: $radius-md !important;
+  overflow: hidden !important;
+  box-shadow: $shadow-sm !important;
+
+  .nav__title {
+    margin: 0 !important;
+    padding: 0.55rem 0.9rem !important;
+    background: $ml-primary !important;
+    color: $ml-on-primary !important;
+    font-family: $font-display !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 0 !important;
+  }
+}
+
+.toc__menu {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+
+  li { margin: 0 !important; }
+
+  a {
+    display: block !important;
+    padding: 0.5rem 0.9rem !important;
+    margin: 0 !important;
+    font-family: $font-display !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    color: $ml-primary !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    line-height: 1.4 !important;
+
+    &:hover {
+      background-color: $ml-surface-low !important;
+      color: $ml-secondary !important;
+    }
+  }
+
+  .active a,
+  li.active a {
+    background-color: $ml-surface-low !important;
+    color: $ml-secondary !important;
+    font-weight: 700 !important;
+  }
+}
+
+/* Inline body highlight (ML acronym on home) ------------------------------ */
+.hl-ml {
+  color: $ml-secondary;
+  font-weight: 800;
+  font-size: 1.05em;
+  font-family: $font-display;
+}
+
+/* Publication component --------------------------------------------------- */
+// (was `#publication` — repeated per paper, which is invalid HTML. Now `.publication`.)
+.publication {
+  display: table;
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background: $ml-surface-lowest;
+  border-radius: $radius-md;
+  margin-bottom: 0.7rem;
+  transition: background 0.25s ease;
+
+  &:hover { background: $ml-surface-low; }
+
+  .paper { display: table-cell; width: 90%; padding: 0 1rem 0 0; }
+  .stats { display: table-cell; width: 10%; vertical-align: middle; }
+
+  a:hover {
+    text-decoration: none;
+    background-image: linear-gradient(transparent calc(100% - 2px), $ml-secondary 2px);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-bottom: none;
+  }
+}
+
+.style_title  { font-weight: 700; font-size: 0.92rem; line-height: 1.35; color: $ml-primary; font-family: $font-display; letter-spacing: -0.01em; }
+.style_author { font-weight: 400; font-size: 0.78rem; line-height: 1.4; color: $ml-on-surface-variant; }
+.style_journal{ font-style: italic; font-weight: 400; font-size: 0.78rem; color: $ml-on-surface-variant; }
+.style_small  { font-weight: 400; font-size: 0.74rem; color: $ml-on-surface-variant; }
+
+.style_contact, .style_email {
+  font-weight: 400; font-size: 0.85rem; color: $ml-on-surface-variant;
+  a:hover { text-decoration: none; color: $ml-secondary; border-bottom: none; }
+}
+
+/* Utility: undecorated link (replaces the inline style="text-decoration:none"
+   repeated 6 times across team.md / contact.md / the publication include). */
+.u-link-plain,
+.u-link-plain:hover {
+  text-decoration: none !important;
+  background-image: none !important;
+  border-bottom: none !important;
+}
+
+/* Sidebar-media (project pages) ------------------------------------------- */
 .sidebar-media {
   display: flex;
-  flex-direction: column;   /* logo, then title, then links */
+  flex-direction: column;
   align-items: center;
   gap: 0.6rem;
+  padding: 1rem 0.85rem 1.2rem;
+  background: $ml-surface-lowest;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
 }
 
 .sidebar-media__logo {
-  width: min(350px, 100%);
-  height: 150px;
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  max-height: 110px;
   object-fit: contain;
   display: block;
+  margin: 0;
 }
 
 .sidebar-media__title {
   margin: 0;
-  text-align: left;
+  text-align: center;
   width: 100%;
+  color: $ml-primary;
+  font-family: $font-display;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
 }
 
 .sidebar-media__body {
   width: 100%;
-  text-align: left;         /* or center if you prefer */
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.35;
+
+  a {
+    color: $ml-secondary;
+    font-family: $font-display;
+    font-weight: 600;
+    text-decoration: none;
+    background-image: none !important;     // opt out of body-link underline animation
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+
+    &:hover { border-bottom-color: $ml-secondary; }
+  }
+}
+
+/* Feature row cards (team / projects / contact) --------------------------- */
+.feature__wrapper {
+  border-top: none !important;
+  padding: 1.5rem 0;
+}
+
+.feature__item {
+  margin-bottom: 2.5rem;
+
+  .archive__item {
+    background: $ml-surface-lowest;
+    border-radius: $radius-2xl;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 4px 14px rgba(24, 27, 37, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  .archive__item-teaser img { border-radius: $radius-2xl $radius-2xl 0 0; }
+  .archive__item-body  { padding: 1.5rem; }
+  .archive__item-title { margin-top: 0; }
+}
+
+/* Tables ------------------------------------------------------------------ */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: $ml-surface-lowest;
+  border: 1px solid $ml-ghost-border;
+
+  th { background: $ml-surface-low; color: $ml-primary; font-family: $font-display; font-weight: 700; }
+  td, th { border: none; border-bottom: 1px solid $ml-ghost-border; }
+  tr:last-child td { border-bottom: none; }
+}
+
+/* Code blocks ------------------------------------------------------------- */
+pre, code {
+  border-radius: $radius-sm;
+  background: $ml-surface-low;
 }

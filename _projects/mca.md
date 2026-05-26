@@ -2,7 +2,8 @@
 title: "Microbial Clinical Atlas"
 excerpt: "Useful clinical microbiome knowledge base"
 header:
-  image: /assets/images/main_projects.png
+  image: /assets/images/home/main_projects.png
+  teaser: /assets/images/project/project_mca_logo.png
 date: 2026-03-01
 last_modified_at: 2026-03-05
 sidebar:
@@ -10,10 +11,10 @@ sidebar:
   - title: ""
     text: >
       <div class="sidebar-media">
-        <img class="sidebar-media__logo" src="/assets/images/project_mca_logo.png" alt="">
+        <img class="sidebar-media__logo" src="/assets/images/project/project_mca_logo.png" alt="">
         <h3 class="sidebar-media__title">Research Outputs</h3>
         <div class="sidebar-media__body">
-          <a href="https://bioinformatics.ucalgary.ca/MCA/" target="_blank">MCA Knowedge base</a>
+          <a href="https://mca.thebiohub.ca/" target="_blank">MCA Knowedge base</a>
         </div>
       </div>
 ---
