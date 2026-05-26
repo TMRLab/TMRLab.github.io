@@ -23,26 +23,7 @@ header:
         <center><img src="{{ member.avatar | relative_url }}" alt="{{ member.name }}" itemprop="image" class="u-photo"></center>
       </div>
       <br />
-      <center>
-      {% if member.email %}
-          <a href="mailto:{{ member.email }}" rel="me" class="u-email u-link-plain">
-            <meta itemprop="email" content="{{ member.email }}" />
-            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</span>
-          </a>
-      {% endif %}
-      {% if member.linkedin %}
-        &nbsp;
-          <a class="u-link-plain" href="https://www.linkedin.com/in/{{ member.linkedin }}" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank">
-            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span>
-          </a>
-      {% endif %}
-      {% if member.website %}
-          &nbsp;
-          <a class="u-link-plain" href="{{ member.website }}" itemprop="url" rel="me" target="_blank">
-            <i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span>
-          </a>
-      {% endif %}
-      </center>
+      <div class="member-links">{% if member.email %}<a href="mailto:{{ member.email }}" rel="me" class="u-email u-link-plain"><meta itemprop="email" content="{{ member.email }}" /><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</span></a>{% endif %}{% if member.linkedin %}<a class="u-link-plain" href="https://www.linkedin.com/in/{{ member.linkedin }}" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a>{% endif %}{% if member.website %}<a class="u-link-plain" href="{{ member.website }}" itemprop="url" rel="me" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a>{% endif %}</div>
     </td>
     <td width="77%">
       <div class="author__content">
