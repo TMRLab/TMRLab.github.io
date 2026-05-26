@@ -38,7 +38,7 @@ Calgary, AB T2N 4N1, Canada <br />
 <u>Address</u>: Health Science Centre (HSC), Room 1718 <br />
 </span>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.28131983187!2d-114.1388055225042!3d51.06635674282607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716faea6e398f7%3A0xf4d1151f265d68c4!2sHealth%20Sciences%20Centre!5e0!3m2!1sen!2sca!4v1747509063302!5m2!1sen!2sca" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.28131983187!2d-114.1388055225042!3d51.06635674282607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716faea6e398f7%3A0xf4d1151f265d68c4!2sHealth%20Sciences%20Centre!5e0!3m2!1sen!2sca!4v1747509063302!5m2!1sen!2sca" width="600" height="400" style="border:0; max-width:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 <br />
 **_Big questions need bold thinkers._**

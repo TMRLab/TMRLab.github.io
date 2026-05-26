@@ -15,7 +15,7 @@ header:
 
 ## Current Members
 
-<table border="0" width="100%">
+<table class="team-table" border="0" width="100%">
 {% for member in site.data.members %}
   <tr valign="top">
     <td width="23%">

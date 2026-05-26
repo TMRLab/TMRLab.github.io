@@ -815,6 +815,30 @@ table .author__bio {
   border-bottom: none !important;
 }
 
+/* Hide Altmetric donuts on mobile -------------------------------------------- */
+@media (max-width: 48em) {
+  .stats .altmetric-embed { display: none; }
+}
+
+/* Hide acknowledgement-gallery filler logo on mobile ------------------------- */
+@media (max-width: 48em) {
+  img[src$="logo_empty.png"] { display: none; }
+}
+
+/* Team table: stack photo above bio on mobile -------------------------------- */
+@media (max-width: 48em) {
+  .team-table,
+  .team-table tbody,
+  .team-table tr,
+  .team-table td {
+    display: block;
+    width: 100% !important;
+  }
+  .team-table tr { margin-bottom: 2rem; }
+  .team-table td { padding: 0.25rem 0; }
+  .team-table .author__avatar img { max-width: 50%; height: auto; }
+}
+
 /* Sidebar-media (project pages) ------------------------------------------- */
 .sidebar-media {
   display: flex;
